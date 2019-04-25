@@ -64,6 +64,7 @@ class _TypedDictMeta(type):
         for base in bases:
             anns.update(base.__dict__.get('__annotations__', {}))
         tp_dict.__annotations__ = anns
+        tp_dict.__orig_bases__ = bases
         if not hasattr(tp_dict, '__total__'):
             tp_dict.__total__ = total
         return tp_dict
